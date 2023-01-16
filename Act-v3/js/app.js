@@ -71,6 +71,7 @@ const x = d3.scaleLinear().range([0, ancho])
 const y = d3.scaleLinear().range([alto, 0])
 const grado = d3.scaleOrdinal().range([0+5, ancho/4, ancho /2, 3*ancho/4 , ancho-5])
 const xyear = d3.scaleLinear().range([0, ancho])
+const educa = d3.scaleOrdinal().range(d3.schemeDark2)
 
 const xAxis = d3.axisBottom(grado).tickSize(-alto)
 const yAxis = d3.axisLeft(y).tickSize(-ancho)
@@ -84,6 +85,7 @@ const load = async () => {
   x.domain(d3.extent(data, (d) => d.PIB))
   y.domain([0, d3.max(data, (d)=> d.value )*1.1])
   grado.domain(Array.from(new Set(data.map((d) => d.Escolaridad))))
+  educa.domain(Array.from(new Set(data.map((d) => d.Escolaridad))))
 
  xyear.domain(d3.extent(data, (d) => d.Fecha))//domain(Array.from(new Set(data.map((d) => d.Fecha))))//(d3.extent(data, (d) => d.Años__ESTANDAR))
 
@@ -149,7 +151,7 @@ const render = (data) => {
     .attr("cx", (d) => grado(d.Escolaridad))//x(d.PIB))
     .attr("cy", (d) => y(d.value))
     .attr("r", 5)
-    .attr("fill", "#a0136788")//(d) => grado(d.Escolaridad) + "88")
+    .attr("fill", (d) => educa(d.Escolaridad) + "88")
     .attr("clip-path", "url(#clip)")
     .attr("stroke", "#00000088")
 
@@ -161,7 +163,7 @@ const render = (data) => {
     .attr("cx", (d) => xyear(d.Fecha))//x(d.PIB))
     .attr("cy", (d) => y(d.value))
     .attr("r", 5)
-    .attr("fill", "#a0136788")//(d) => grado(d.Escolaridad) + "88")
+    .attr("fill",  (d) => educa(d.Escolaridad) + "88")
     .attr("clip-path", "url(#clip)")
     .attr("stroke", "#00000088")
 
@@ -178,3 +180,4 @@ const render = (data) => {
 
 
 load()
+
