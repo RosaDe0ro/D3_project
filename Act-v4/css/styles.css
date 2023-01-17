@@ -1,0 +1,46 @@
+.fig {
+  background-color: rgb(252, 248, 248);
+}
+
+.texto {
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Impact;
+  fill: #457b9d;
+}
+
+.grupo {
+  fill: #ffffff44;
+  stroke: #00000099;
+}
+
+.ejes {
+  font-size: 16px;
+  font-family: "Fira Code";
+}
+
+.ejes line {
+  stroke-width: 1;
+  stroke: #33333344;
+  stroke-dasharray: 4 2;
+}
+
+.labels {
+  font-size: 30px;
+  font-family: "Fira Code";
+}
+
+.year {
+  font-size: 450px;
+  font-family: "Fira Code";
+  fill: #bbb;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.barchart {
+  float: left;
+}
+.legend svg {
+  height: 300px; 
+}
